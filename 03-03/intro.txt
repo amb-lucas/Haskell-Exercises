@@ -1,0 +1,8 @@
+1. Escrever arquivos .hs
+
+2. Compilar e executar o arquivo com o comando
+    - ghci arquivo.hs
+
+3. Pode-se interagir com os declarados no arquivo
+   executando comandos normalmente
+
