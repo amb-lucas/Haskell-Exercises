@@ -19,13 +19,35 @@ selectVendas n s
   | otherwise       = selectVendas (n - 1) s
   
   
--- Usando listas
-totalVendas = [1, 2, 3, 3, 3, 4, 4, 5, 5, 6]
-
--- head: primeiro elemento
--- tail: resto da lista
-selectTotalVendas lista s
-  | lista == []       = 0
-  | (head lista) == s = 1 + (selectTotalVendas (tail lista) s)
-  | otherwise         = selectTotalVendas (tail lista) s
   
+-- EXERCÍCIOS
+
+-- Fatorial: Calcula o fatorial do parâmetro
+fatorial :: Int -> Int
+fatorial n
+  | n == 0    = 1
+  | otherwise = n * fatorial(n-1)
+
+-- all4Equal: Checa se todos são iguais
+all4Equal :: Int -> Int -> Int -> Int -> Bool
+all4Equal a b c d
+  | a == b && b == c && c == d = True
+  | otherwise                  = False
+
+-- equalCount: Retorna quantos parâmetros são iguais
+equalCount :: Int -> Int -> Int -> Int
+equalCount a b c
+  | a == b && b == c           = 3
+  | a == b || b == c || a == c = 2
+  | otherwise                  = 0
+
+-- coprimes: Retorna se os números são primos entre si
+mdc :: Int -> Int -> Int
+mdc a b
+  | b == 0    = a
+  | otherwise = mdc b (a `mod` b)
+
+coprimes :: Int -> Int -> Bool
+coprimes a b
+  | mdc a b == 1 = True
+  | otherwise    = False
