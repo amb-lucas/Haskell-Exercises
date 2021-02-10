@@ -13,13 +13,13 @@ splitStringOn' c (on:str) curAns curBuilt
   | c == on                   = splitStringOn' c str curAns ""
   | otherwise                 = splitStringOn' c str curAns (curBuilt ++ (on:""))
 
-logMes :: String -> String -> Double
+logMes :: String -> String -> [Double]
 logMes a b = logMes' a (splitStringOn ';' b)
 
-logMes' :: String -> [String] -> Double
-logMes' _ [] = 0
+logMes' :: String -> [String] -> [Double]
+logMes' _ [] = []
 logMes' m dataList
-  | m == month  = value + restSolved
+  | m == month  = value:restSolved
   | otherwise   = restSolved
     where month = words (dataList !! 0) !! 1
           value = read (dataList !! 2)
@@ -30,4 +30,5 @@ main = do
     a <- getLine
     b <- getLine
     let result = logMes a b
-    print result
+    let answer = foldl (+) 0 result
+    print answer
